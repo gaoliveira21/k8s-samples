@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-db
+  labels:
+    app: webapp
+    type: frontend
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  replicas: 6
+  template:
+    metadata:
+      name: webapp-pod
+      labels:
+        app: webapp
+        type: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
