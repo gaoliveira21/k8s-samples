@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: result
+  name: result
+  namespace: vote
+spec:
+  selector:
+    matchLabels:
+      app: result
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+        - name: result-container
+          image: kodekloud/examplevotingapp_result:v1
+          ports:
+            - containerPort: 80
+              name: result

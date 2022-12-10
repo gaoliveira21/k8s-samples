@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: vote
+  name: vote
+  namespace: vote
+spec:
+  type: NodePort
+  ports:
+    - port: 5000
+      name: vote-svc
+      targetPort: 80
+      nodePort: 31000
+  selector:
+    app: vote
